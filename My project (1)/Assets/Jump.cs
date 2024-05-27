@@ -1,27 +1,45 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Jump : MonoBehaviour
 {
     private Animator mAnimator;
-    // Start is called before the first frame update
+
     void Start()
     {
         mAnimator = GetComponent<Animator>();
 
-        
+
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
-        if(mAnimator != null)
+        if (mAnimator != null)
         {
-            if(Input.GetKeyDown(KeyCode.Space))
+            AnimatorStateInfo currentState = mAnimator.GetCurrentAnimatorStateInfo(0);
+
+            if (Input.GetKeyDown(KeyCode.Space) && currentState.IsName("Idle"))
             {
-                mAnimator.SetTrigger("TrJump");
+               
+                    mAnimator.SetTrigger("TrJump");
+                
+            }
+            if (Input.GetMouseButtonDown(0) && currentState.IsName("Idle"))
+            {
+                mAnimator.SetTrigger("TrSit");
+
+              
+            }
+
+            if (Input.GetMouseButtonDown(0) && (currentState.IsName("Sit") || currentState.IsName("Sit_Idle")))
+            {
+                mAnimator.SetTrigger("TrStand");
             }
         }
     }
+
+
+
 }
