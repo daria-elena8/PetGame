@@ -10,7 +10,7 @@ public class Jump : MonoBehaviour
     private Vector2 startTouchPosition;
     private Vector2 endTouchPosition;
     private float swipeThreshold = 50.0f; // Distanta minima pentru a considera un swipe
-
+    private bool jumpType = false; 
     void Start()
     {
         mAnimator = GetComponent<Animator>();
@@ -75,8 +75,16 @@ public class Jump : MonoBehaviour
         Debug.Log("Swipe Up");
         // Actiuni pentru swipe in sus
         if (currentState.IsName("Idle"))
-        {
-            mAnimator.SetTrigger("TrJump");
+        {   if (jumpType == false)
+            {
+                mAnimator.SetTrigger("TrJump");
+                jumpType = true;
+            }
+            else
+            {
+                mAnimator.SetTrigger("TrJump2");
+                jumpType = false;
+            }
         }
         else if (currentState.IsName("Sit") || currentState.IsName("Sit_Idle"))
         {
