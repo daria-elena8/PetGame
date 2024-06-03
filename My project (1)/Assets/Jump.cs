@@ -5,44 +5,81 @@ using UnityEngine;
 public class Jump : MonoBehaviour
 {
     private Animator mAnimator;
+    private Collider2D foxCollider;
 
     // Variabile pentru swipe detection
     private Vector2 startTouchPosition;
     private Vector2 endTouchPosition;
     private float swipeThreshold = 50.0f; // Distanta minima pentru a considera un swipe
-    private bool jumpType = false; 
+    private bool jumpType = false;
+    private bool isSwipeValid = false;
+
     void Start()
     {
         mAnimator = GetComponent<Animator>();
+        foxCollider = GetComponent<Collider2D>();
+
+        if (foxCollider == null)
+        {
+            Debug.LogError("No Collider2D component found on the Fox object.");
+        }
     }
 
     void Update()
     {
-        if (mAnimator != null)
+        // Logica de swipe este acum în metodele OnMouseDown și OnMouseUp
+    }
+
+    void OnMouseDown()
+    {
+        // Inregistreaza pozitia de start a mouse-ului
+        startTouchPosition = Input.mousePosition;
+        Debug.Log("Mouse button down at: " + startTouchPosition);
+
+        // Verifica daca pozitia de start este pe collider-ul obiectului Fox
+        if (IsPointedOverCollider(startTouchPosition))
         {
-            AnimatorStateInfo currentState = mAnimator.GetCurrentAnimatorStateInfo(0);
-
-            if (Input.GetMouseButtonDown(0))
-            {
-                // Inregistreaza pozitia de start a mouse-ului
-                startTouchPosition = Input.mousePosition;
-            }
-
-            if (Input.GetMouseButtonUp(0))
-            {
-                // Inregistreaza pozitia de final a mouse-ului
-                endTouchPosition = Input.mousePosition;
-                DetectSwipe(currentState);
-            }
+            isSwipeValid = true;
+            Debug.Log("Swipe started on Fox object.");
+        }
+        else
+        {
+            isSwipeValid = false;
+            Debug.Log("Swipe did not start on Fox object.");
         }
     }
 
-    void DetectSwipe(AnimatorStateInfo currentState)
+    void OnMouseUp()
+    {
+        if (isSwipeValid)
+        {
+            // Inregistreaza pozitia de final a mouse-ului
+            endTouchPosition = Input.mousePosition;
+            Debug.Log("Mouse button up at: " + endTouchPosition);
+
+            DetectSwipe();
+            isSwipeValid = false; // Resetam validitatea swipe-ului
+        }
+    }
+
+    bool IsPointedOverCollider(Vector2 screenPosition)
+    {
+        Vector2 worldPoint = Camera.main.ScreenToWorldPoint(screenPosition);
+        Debug.Log("World point: " + worldPoint);
+        bool isOver = foxCollider.OverlapPoint(worldPoint);
+        Debug.Log("Is over collider: " + isOver);
+        return isOver;
+    }
+
+    void DetectSwipe()
     {
         Vector2 swipeDelta = endTouchPosition - startTouchPosition;
+        Debug.Log("Swipe delta: " + swipeDelta);
 
         if (swipeDelta.magnitude > swipeThreshold)
         {
+            AnimatorStateInfo currentState = mAnimator.GetCurrentAnimatorStateInfo(0);
+
             if (Mathf.Abs(swipeDelta.x) > Mathf.Abs(swipeDelta.y))
             {
                 // Swipe pe orizontala
@@ -68,6 +105,10 @@ public class Jump : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            Debug.Log("Swipe delta too small: " + swipeDelta.magnitude);
+        }
     }
 
     void OnSwipeUp(AnimatorStateInfo currentState)
@@ -75,7 +116,8 @@ public class Jump : MonoBehaviour
         Debug.Log("Swipe Up");
         // Actiuni pentru swipe in sus
         if (currentState.IsName("Idle"))
-        {   if (jumpType == false)
+        {
+            if (jumpType == false)
             {
                 mAnimator.SetTrigger("TrJump");
                 jumpType = true;
@@ -100,7 +142,6 @@ public class Jump : MonoBehaviour
         {
             mAnimator.SetTrigger("TrSit");
         }
-        
     }
 
     void OnSwipeLeft(AnimatorStateInfo currentState)
