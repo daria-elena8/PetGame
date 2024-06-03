@@ -5,6 +5,7 @@ using UnityEngine;
 public class Jump : MonoBehaviour
 {
     private Animator mAnimator;
+    private CurrencyManager currencyManager;
 
     // Variabile pentru swipe detection
     private Vector2 startTouchPosition;
@@ -14,6 +15,7 @@ public class Jump : MonoBehaviour
     void Start()
     {
         mAnimator = GetComponent<Animator>();
+        currencyManager = FindObjectOfType<CurrencyManager>();
     }
 
     void Update()
@@ -79,6 +81,7 @@ public class Jump : MonoBehaviour
             {
                 mAnimator.SetTrigger("TrJump");
                 jumpType = true;
+                currencyManager.AddCurrency(10);
             }
             else
             {
@@ -99,6 +102,7 @@ public class Jump : MonoBehaviour
         if (currentState.IsName("Idle"))
         {
             mAnimator.SetTrigger("TrSit");
+            currencyManager.AddCurrency(5);
         }
         
     }

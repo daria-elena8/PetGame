@@ -8,6 +8,8 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private CanvasGroup canvasGroup;
     private Vector2 initialPosition;
 
+    public PotionManager potionManager;
+
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -38,7 +40,11 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             if (foxAnimator != null)
             {
                 foxAnimator.SetTrigger("TrEat");
-                
+
+                // !!!!!!!!!!!!Asta s-ar putea sa nu fie bine
+                // sa se declanseze pentru orice drag 
+                potionManager.UsePotion();
+
             }
         }
         rectTransform.anchoredPosition = initialPosition;
