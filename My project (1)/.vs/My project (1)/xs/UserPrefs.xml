@@ -1,0 +1,29 @@
+﻿<Properties StartupConfiguration="{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/2D Progress Bar Toolkit/Scripts/HappinessBar.cs">
+    <Files>
+      <File FileName="Assets/2D Progress Bar Toolkit/Scripts/ClassicProgressBar.cs" Line="99" Column="40" />
+      <File FileName="Assets/2D Progress Bar Toolkit/Scripts/HappinessBar (copy) (copy).cs" Line="24" Column="62" />
+      <File FileName="Assets/2D Progress Bar Toolkit/Scripts/HungryBar.cs" Line="13" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="My project (1)" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="2D Progress Bar Toolkit" expanded="True">
+                <Node name="Scripts" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="d72291ec-a53e-477c-affb-5333d962772e" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
