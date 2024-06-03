@@ -10,6 +10,8 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private Vector2 initialPosition;
     private Animator foxAnimator;
 
+    public PotionManager potionManager;
+
 
     private void Awake()
     {
@@ -68,6 +70,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
                     foxAnimator.SetTrigger("TrEat");
                     Debug.Log("Trigger 'TrEat' set on " + result.gameObject.name);
                     triggerSet = true;
+                    potionManager.RemovePotion();
                 }
                 break;
             }
