@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
@@ -10,6 +11,11 @@ public class Potion : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
     private Vector2 initialPosition;
     private Animator foxAnimator;
 
+    public Text potionText;
+    public CurrencyManager currencyManager;
+    public ErrorMessageManager errorMessageManager;
+
+    private int potionCount = 0;
 
     private void Awake()
     {
@@ -21,6 +27,10 @@ public class Potion : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
         //if(foxObject != null)
         //    foxAnimator = foxObject.GetComponent<Animator>();
 
+    }
+    private void Start()
+    {
+        UpdatePotionText();        
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -67,6 +77,7 @@ public class Potion : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
                 {
                     foxAnimator.SetTrigger("TrPotion");
                     Debug.Log("Trigger 'TrPotion' set on " + result.gameObject.name);
+                    RemovePotion();
                     triggerSet = true;
                 }
                 break;
@@ -81,10 +92,46 @@ public class Potion : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
             {
                 foxAnimator.SetTrigger("TrPotion");
                 Debug.Log("Fallback trigger 'TrPotion' set on " + eventData.pointerEnter.name);
+                RemovePotion();
             }
         }
 
         // Reveniți la poziția inițială
         rectTransform.anchoredPosition = initialPosition;
     }
+
+    public void AddPotion()
+    {
+        if (currencyManager.GetCurrency() >= 30)
+        {
+            potionCount++;
+            currencyManager.RemoveCurrency(30);
+            UpdatePotionText();
+        }
+        else
+        {
+            Debug.Log("Not enough currency to buy a potion!");
+            errorMessageManager.ShowErrorMessage("Not enough currency to buy a potion!", 2f);
+        }
+    }
+
+    private void RemovePotion()
+    {
+        if (potionCount > 0)
+        {
+            potionCount--;
+            UpdatePotionText();
+        }
+        else
+        {
+            Debug.Log("No potions left to use!");
+            errorMessageManager.ShowErrorMessage("No potions left to use!", 2f);
+        }
+    }
+
+    private void UpdatePotionText()
+    {
+        potionText.text = "" + potionCount;
+    }
+
 }
