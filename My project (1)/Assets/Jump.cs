@@ -14,6 +14,9 @@ public class Jump : MonoBehaviour
     private float swipeThreshold = 50.0f; // Distanta minima pentru a considera un swipe
     private bool jumpType = false;
     private bool isSwipeValid = false;
+    public Happiness happinessBar;
+    public FitnessBar fitnessBar;
+    public HungryBar hungryBar;
 
     void Start()
     {
@@ -24,6 +27,19 @@ public class Jump : MonoBehaviour
         {
             Debug.LogError("No Collider2D component found on the Fox object.");
         }
+        if (happinessBar == null)
+        {
+            happinessBar = FindObjectOfType<Happiness>();
+        }
+        if (fitnessBar == null)
+        {
+            fitnessBar = FindObjectOfType<FitnessBar>();
+        }
+        if (hungryBar == null)
+        {
+            hungryBar = FindObjectOfType<HungryBar>();
+        }
+
     }
 
     void Update()
@@ -123,17 +139,28 @@ public class Jump : MonoBehaviour
                 mAnimator.SetTrigger("TrJump");
                 jumpType = true;
                 currencyManager?.AddCurrency(10);
+               
+                happinessBar.IncreaseHappiness();
+                fitnessBar.IncreaseFitness();
+                hungryBar.DecreaseHungry();
+
+             
             }
             else
             {
                 mAnimator.SetTrigger("TrJump2");
                 jumpType = false;
                 currencyManager?.AddCurrency(2);
+                happinessBar.IncreaseHappiness();
+                fitnessBar.IncreaseFitness();
+                hungryBar.DecreaseHungry();
             }
         }
         else if (currentState.IsName("Sit") || currentState.IsName("Sit_Idle"))
         {
             mAnimator.SetTrigger("TrStand");
+            happinessBar.IncreaseHappiness();
+            
         }
     }
 
@@ -145,6 +172,8 @@ public class Jump : MonoBehaviour
         {
             mAnimator.SetTrigger("TrSit");
             currencyManager?.AddCurrency(5);
+            happinessBar.IncreaseHappiness();
+           
         }
     }
 

@@ -73,6 +73,7 @@ public class FitnessBar : MonoBehaviour
         m_FillAmount = Mathf.Clamp(m_FillAmount, 0, 1f);
 
     }
+    public void MaxFitness() { m_FillAmount = 1f; }
 
     // Funcția care va fi apelată de la Animator
     public void OnAnimationTrigger()

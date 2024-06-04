@@ -203,7 +203,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 456.39844, y: -1101.8047}
+  m_AnchoredPosition: {x: 456.39844, y: -1082}
   m_SizeDelta: {x: 114.82, y: 49.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &146015136
@@ -1029,7 +1029,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -16.492, y: -1095}
+  m_AnchoredPosition: {x: -16.492, y: -1122}
   m_SizeDelta: {x: 296.3635, y: 276.2083}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1025251423
@@ -1044,6 +1044,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd4e4597985e46a4ca2c25847a95164f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hungryBar: {fileID: 0}
+  happinessBar: {fileID: 0}
 --- !u!114 &1025251424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1297,7 +1299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3253697496625059739, guid: f6470122ed2a04396806ed472fb032ff, type: 3}
       propertyPath: m_Name
-      value: ClassicProgressBar
+      value: HappinessBar
       objectReference: {fileID: 0}
     - target: {fileID: 3253697496625059740, guid: f6470122ed2a04396806ed472fb032ff, type: 3}
       propertyPath: m_Pivot.x
@@ -1510,7 +1512,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3253697496625059739, guid: f6470122ed2a04396806ed472fb032ff, type: 3}
       propertyPath: m_Name
-      value: ClassicProgressBar (2)
+      value: FitnessBar
       objectReference: {fileID: 0}
     - target: {fileID: 3253697496625059740, guid: f6470122ed2a04396806ed472fb032ff, type: 3}
       propertyPath: m_Pivot.x
@@ -1671,9 +1673,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3253697496625059739, guid: f6470122ed2a04396806ed472fb032ff, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1371135643}
-    - targetCorrespondingSourceObject: {fileID: 3253697496625059739, guid: f6470122ed2a04396806ed472fb032ff, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1371135644}
   m_SourcePrefab: {fileID: 100100000, guid: f6470122ed2a04396806ed472fb032ff, type: 3}
 --- !u!224 &1371135640 stripped
 RectTransform:
@@ -1699,28 +1698,6 @@ MonoBehaviour:
   m_FillAmount: 1
   increaseAmount: 0.1
   decayRate: 0.01
---- !u!114 &1371135644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 664335907}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4cbab83af6de4bc29177592e46c24bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MainColor: {r: 1, g: 1, b: 1, a: 1}
-  m_FillColor: {r: 0, g: 1, b: 0, a: 1}
-  m_BackgroundColorAtZero: {r: 1, g: 0, b: 0, a: 1}
-  m_NumberOfSegments: 1
-  m_SizeOfNotch: 20
-  m_FillAmount: 1
-  increaseAmount: 0.1
-  decayRate: 0.01
-  animator: {fileID: 0}
-  triggerName: TrSit
 --- !u!1 &1393602469
 GameObject:
   m_ObjectHideFlags: 0
@@ -2143,6 +2120,9 @@ MonoBehaviour:
   potionText: {fileID: 146015136}
   currencyManager: {fileID: 995506159}
   errorMessageManager: {fileID: 119155932}
+  hungryBar: {fileID: 0}
+  happinessBar: {fileID: 0}
+  fitnessBar: {fileID: 0}
 --- !u!1001 &1830332438
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2578,7 +2558,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3253697496625059739, guid: f6470122ed2a04396806ed472fb032ff, type: 3}
       propertyPath: m_Name
-      value: ClassicProgressBar (1)
+      value: HungerBar
       objectReference: {fileID: 0}
     - target: {fileID: 3253697496625059740, guid: f6470122ed2a04396806ed472fb032ff, type: 3}
       propertyPath: m_Pivot.x
@@ -2739,9 +2719,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3253697496625059739, guid: f6470122ed2a04396806ed472fb032ff, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1874577338}
-    - targetCorrespondingSourceObject: {fileID: 3253697496625059739, guid: f6470122ed2a04396806ed472fb032ff, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1874577339}
   m_SourcePrefab: {fileID: 100100000, guid: f6470122ed2a04396806ed472fb032ff, type: 3}
 --- !u!224 &1874577335 stripped
 RectTransform:
@@ -2768,28 +2745,6 @@ MonoBehaviour:
   m_FillAmount: 1
   increaseAmount: 0.1
   decayRate: 0.01
---- !u!114 &1874577339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 803245668}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4cbab83af6de4bc29177592e46c24bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MainColor: {r: 1, g: 1, b: 1, a: 1}
-  m_FillColor: {r: 0, g: 1, b: 0, a: 1}
-  m_BackgroundColorAtZero: {r: 1, g: 0, b: 0, a: 1}
-  m_NumberOfSegments: 1
-  m_SizeOfNotch: 20
-  m_FillAmount: 1
-  increaseAmount: 0.1
-  decayRate: 0.01
-  animator: {fileID: 0}
-  triggerName: TrSit
 --- !u!1 &1950232163 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 91e4778cdfb185d4d9bfe81556dc4333, type: 3}
@@ -2820,6 +2775,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currencyManager: {fileID: 995506159}
+  happinessBar: {fileID: 0}
+  fitnessBar: {fileID: 0}
+  hungryBar: {fileID: 0}
 --- !u!95 &1950232169 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 91e4778cdfb185d4d9bfe81556dc4333, type: 3}

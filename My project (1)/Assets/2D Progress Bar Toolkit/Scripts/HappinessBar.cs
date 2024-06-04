@@ -99,13 +99,10 @@ public class Happiness : MonoBehaviour
         m_FillAmount += increaseAmount;
         m_FillAmount = Mathf.Clamp(m_FillAmount, 0, 1f);
         // Folosim variabila triggerName în loc de TrSit
-        if (animator != null && !string.IsNullOrEmpty(this.triggerName))
-        {
-            animator.SetTrigger(this.triggerName);
-        }
 
     }
 
+    public void MaxHappiness() { m_FillAmount = 1f; }
     // Funcția care va fi apelată de la Animator
     public void OnAnimationTrigger()
     {

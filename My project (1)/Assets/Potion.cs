@@ -15,6 +15,10 @@ public class Potion : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
     public CurrencyManager currencyManager;
     public ErrorMessageManager errorMessageManager;
 
+    public HungryBar hungryBar;
+    public Happiness happinessBar;
+    public FitnessBar fitnessBar;
+
     private int potionCount = 0;
 
     private void Awake()
@@ -26,6 +30,18 @@ public class Potion : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
         //GameObject foxObject = GameObject.FindGameObjectWithTag("Fox");
         //if(foxObject != null)
         //    foxAnimator = foxObject.GetComponent<Animator>();
+        if (hungryBar == null)
+        {
+            hungryBar = FindObjectOfType<HungryBar>();
+        }
+        if (happinessBar == null)
+        {
+            happinessBar = FindObjectOfType<Happiness>();
+        }
+        if (fitnessBar == null)
+        {
+            fitnessBar = FindObjectOfType<FitnessBar>();
+        }
 
     }
     private void Start()
@@ -75,10 +91,22 @@ public class Potion : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
                 Animator foxAnimator = result.gameObject.GetComponent<Animator>();
                 if (foxAnimator != null)
                 {
-                    foxAnimator.SetTrigger("TrPotion");
-                    Debug.Log("Trigger 'TrPotion' set on " + result.gameObject.name);
-                    RemovePotion();
-                    triggerSet = true;
+                    if (potionCount > 0)
+                    {
+                        foxAnimator.SetTrigger("TrPotion");
+                        Debug.Log("Trigger 'TrPotion' set on " + result.gameObject.name);
+                        RemovePotion();
+                        triggerSet = true;
+                        hungryBar.MaxHungry();
+                        happinessBar.MaxHappiness();
+                        fitnessBar.MaxFitness();
+                    }
+                    else
+                    {
+                        Debug.Log("No potions left to use!");
+                        errorMessageManager.ShowErrorMessage("No potions left to use!", 2f);
+                    }
+
                 }
                 break;
             }
@@ -90,9 +118,17 @@ public class Potion : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
             Animator foxAnimator = eventData.pointerEnter.GetComponent<Animator>();
             if (foxAnimator != null)
             {
-                foxAnimator.SetTrigger("TrPotion");
-                Debug.Log("Fallback trigger 'TrPotion' set on " + eventData.pointerEnter.name);
-                RemovePotion();
+                if (potionCount > 0)
+                {
+                    foxAnimator.SetTrigger("TrPotion");
+                    Debug.Log("Fallback trigger 'TrPotion' set on " + eventData.pointerEnter.name);
+                    RemovePotion();
+                }
+                else
+                {
+                    Debug.Log("No potions left to use!");
+                    errorMessageManager.ShowErrorMessage("No potions left to use!", 2f);
+                }
             }
         }
 

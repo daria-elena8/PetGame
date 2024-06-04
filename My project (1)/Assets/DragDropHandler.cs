@@ -9,7 +9,8 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private CanvasGroup canvasGroup;
     private Vector2 initialPosition;
     private Animator foxAnimator;
-
+    public HungryBar hungryBar;
+    public Happiness happinessBar;
 
     private void Awake()
     {
@@ -20,6 +21,14 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         //GameObject foxObject = GameObject.FindGameObjectWithTag("Fox");
         //if(foxObject != null)
         //    foxAnimator = foxObject.GetComponent<Animator>();
+        if (hungryBar == null)
+        {
+            hungryBar = FindObjectOfType<HungryBar>();
+        }
+        if (happinessBar == null)
+        {
+            happinessBar = FindObjectOfType<Happiness>();
+        }
 
     }
 
@@ -68,6 +77,11 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
                     foxAnimator.SetTrigger("TrEat");
                     Debug.Log("Trigger 'TrEat' set on " + result.gameObject.name);
                     triggerSet = true;
+                    if (hungryBar != null && happinessBar != null)
+                    {
+                        hungryBar.IncreaseHungry(8f);
+                        happinessBar.IncreaseHappiness();
+                    }
                 }
                 break;
             }

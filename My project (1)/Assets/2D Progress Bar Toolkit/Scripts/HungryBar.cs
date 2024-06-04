@@ -86,18 +86,27 @@ public class HungryBar : MonoBehaviour
         }
     }
 
-    public void IncreaseHungry()
+    public void IncreaseHungry(float x)
     {
         m_FillAmount += increaseAmount;
-        m_FillAmount = Mathf.Clamp(m_FillAmount, 0, 1f);
+        m_FillAmount = Mathf.Clamp(m_FillAmount, 0, x);
 
     }
-
-    // Funcția care va fi apelată de la Animator
-    public void OnAnimationTrigger()
+    public void MaxHungry()
     {
-        IncreaseHungry();
+        m_FillAmount = 1f;
     }
+
+    public void DecreaseHungry()
+    {
+        m_FillAmount -= decayRate;
+        m_FillAmount = Mathf.Clamp(m_FillAmount, 0, 1f);
+    }
+    // Funcția care va fi apelată de la Animator
+    //public void OnAnimationTrigger()
+    //{
+    //    IncreaseHungry();
+    //}
 
     private float ConvertFragmentToWidth(float fragment)
     {
