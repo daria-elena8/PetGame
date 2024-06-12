@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/2D Progress Bar Toolkit/Scenes/Menu.unity
-    guid: 82a875406b9a9ef49ba5694f41a49318
+    path: Assets/Menu/Menu.unity
+    guid: b8a4709ead2fbcd4493d0ee854044c7f
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Menu/HelpMenu.unity
+    guid: 82a875406b9a9ef49ba5694f41a49318
   m_configObjects: {}
