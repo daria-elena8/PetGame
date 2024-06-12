@@ -21,10 +21,7 @@ public class Happiness : MonoBehaviour
     [SerializeField] private float increaseAmount = 0.1f; // Valoarea cu care crește happiness
     [SerializeField] private float decayRate = 0.01f; // Rata de scădere a happiness pe secundă
 
-    [Header("Animator Settings")]
-    [SerializeField] private Animator animator; // Referința la Animator
-    [SerializeField] private string triggerName = "Sit"; // Numele triggerului
-
+    
 
     private RectTransform m_RectTransform;
     private Image m_Image;
