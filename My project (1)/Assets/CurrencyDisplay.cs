@@ -16,19 +16,13 @@ public class CurrencyDisplay : MonoBehaviour
 
     public Text currencyText;
 
-    private CurrencyManager currencyManager;
-
-
 
     void Start()
 
     {
 
-        // Găsește CurrencyManager-ul în scenă 
-        currencyManager = FindObjectOfType<CurrencyManager>();
-        
         // Inițializare text 
-        UpdateCurrencyDisplay(currencyManager.GetCurrency());
+        UpdateCurrencyDisplay(CurrencyManager.GetCurrency());
 
     }
 

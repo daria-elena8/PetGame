@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Menu/HelpMenu.unity
     guid: 82a875406b9a9ef49ba5694f41a49318
+  - enabled: 1
+    path: Assets/Minigame/Minigame.unity
+    guid: f7d2343f2623fb9498ed320c9651bb14
   m_configObjects: {}
