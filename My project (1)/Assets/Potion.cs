@@ -12,7 +12,6 @@ public class Potion : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
     private Animator foxAnimator;
 
     public Text potionText;
-    public CurrencyManager currencyManager;
     public ErrorMessageManager errorMessageManager;
 
     public HungryBar hungryBar;
@@ -138,10 +137,10 @@ public class Potion : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 
     public void AddPotion()
     {
-        if (currencyManager.GetCurrency() >= 30)
+        if (CurrencyManager.GetCurrency() >= 30)
         {
             potionCount++;
-            currencyManager.RemoveCurrency(30);
+            CurrencyManager.RemoveCurrency(30);
             UpdatePotionText();
         }
         else

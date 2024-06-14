@@ -11,7 +11,7 @@ public class CurrencyManager : MonoBehaviour
 
 {
 
-    private int currency = 0;
+    private static int currency = 0;
     // Definirea unui eveniment pentru schimbarea currency-ului 
 
     public static event Action<int> OnCurrencyChanged;
@@ -20,7 +20,7 @@ public class CurrencyManager : MonoBehaviour
 
     // Metodă pentru a adăuga currency 
 
-    public void AddCurrency(int amount)
+    public static void AddCurrency(int amount)
     {
         currency += amount;
         // Emiterea evenimentului 
@@ -32,7 +32,7 @@ public class CurrencyManager : MonoBehaviour
 
     // Metodă pentru a obține valoarea actuală a currency-ului 
 
-    public int GetCurrency()
+    public static int GetCurrency()
     {
         return currency;
 
@@ -40,7 +40,7 @@ public class CurrencyManager : MonoBehaviour
 
 
 
-    public void RemoveCurrency(int amount)
+    public static void RemoveCurrency(int amount)
     {
 
         currency -= amount;

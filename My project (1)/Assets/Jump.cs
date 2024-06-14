@@ -6,7 +6,6 @@ public class Jump : MonoBehaviour
 {
     private Animator mAnimator;
     private Collider2D foxCollider;
-    public CurrencyManager currencyManager;
 
     // Variabile pentru swipe detection
     private Vector2 startTouchPosition;
@@ -138,7 +137,7 @@ public class Jump : MonoBehaviour
             {
                 mAnimator.SetTrigger("TrJump");
                 jumpType = true;
-                currencyManager?.AddCurrency(10);
+                CurrencyManager.AddCurrency(10);
                
                 happinessBar.IncreaseHappiness();
                 fitnessBar.IncreaseFitness();
@@ -150,7 +149,7 @@ public class Jump : MonoBehaviour
             {
                 mAnimator.SetTrigger("TrJump2");
                 jumpType = false;
-                currencyManager?.AddCurrency(2);
+                CurrencyManager.AddCurrency(2);
                 happinessBar.IncreaseHappiness();
                 fitnessBar.IncreaseFitness();
                 hungryBar.DecreaseHungry();
@@ -171,7 +170,7 @@ public class Jump : MonoBehaviour
         if (currentState.IsName("Idle"))
         {
             mAnimator.SetTrigger("TrSit");
-            currencyManager?.AddCurrency(5);
+            CurrencyManager.AddCurrency(5);
             happinessBar.IncreaseHappiness();
            
         }
