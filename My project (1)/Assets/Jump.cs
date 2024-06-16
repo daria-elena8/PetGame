@@ -16,7 +16,7 @@ public class Jump : MonoBehaviour
     public Happiness happinessBar;
     public FitnessBar fitnessBar;
     public HungryBar hungryBar;
-
+    public static string foxAnimatorState;
     void Start()
     {
         mAnimator = GetComponent<Animator>();
@@ -38,7 +38,7 @@ public class Jump : MonoBehaviour
         {
             hungryBar = FindObjectOfType<HungryBar>();
         }
-
+        RestoreAnimatorState();
     }
 
     void Update()
@@ -186,5 +186,30 @@ public class Jump : MonoBehaviour
     {
         Debug.Log("Swipe Right");
         // Actiuni pentru swipe la dreapta
+    }
+    // Salvează starea animatorului
+    public static void SaveAnimatorState(Animator animator)
+    {
+        if (animator != null)
+        {
+            var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+            foxAnimatorState = stateInfo.IsName("Idle") ? "Idle" : stateInfo.IsName("Sit") ? "Sit" : "";
+        }
+    }
+
+    // Restaurează starea animatorului
+    private void RestoreAnimatorState()
+    {
+        if (mAnimator != null && !string.IsNullOrEmpty(foxAnimatorState))
+        {
+            if (foxAnimatorState == "Idle")
+            {
+                mAnimator.Play("Idle", 0, 0);
+            }
+            else if (foxAnimatorState == "Sit")
+            {
+                mAnimator.Play("Sit", 0, 0);
+            }
+        }
     }
 }

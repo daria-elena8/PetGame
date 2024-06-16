@@ -11,6 +11,8 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private Animator foxAnimator;
     public HungryBar hungryBar;
     public Happiness happinessBar;
+    private AudioSource audioSource;
+    public AudioClip dropSound;
 
     private void Awake()
     {
@@ -18,6 +20,8 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         canvas = GetComponentInParent<Canvas>();
         canvasGroup = GetComponent<CanvasGroup>();
         initialPosition = rectTransform.anchoredPosition;
+        audioSource = GetComponent<AudioSource>();
+        LoadDropSound();
         //GameObject foxObject = GameObject.FindGameObjectWithTag("Fox");
         //if(foxObject != null)
         //    foxAnimator = foxObject.GetComponent<Animator>();
@@ -31,7 +35,18 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         }
 
     }
-
+    private void LoadDropSound()
+    {
+        if (dropSound == null)
+        {
+            // Încarcă sunetul din folderul Resources
+            dropSound = Resources.Load<AudioClip>("chime-and-chomp-84419.mp3"); // Asigură-te că sunetul de lăsat mărul este în folderul Resources
+            if (dropSound == null)
+            {
+                Debug.LogError("Drop sound not found in Resources folder");
+            }
+        }
+    }
     public void OnBeginDrag(PointerEventData eventData)
     {
         canvasGroup.alpha = 0.6f;
@@ -77,6 +92,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
                     foxAnimator.SetTrigger("TrEat");
                     Debug.Log("Trigger 'TrEat' set on " + result.gameObject.name);
                     triggerSet = true;
+                    PlayDropSound();
                     if (hungryBar != null && happinessBar != null)
                     {
                         hungryBar.IncreaseHungry(8f);
@@ -95,10 +111,22 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             {
                 foxAnimator.SetTrigger("TrEat");
                 Debug.Log("Fallback trigger 'TrEat' set on " + eventData.pointerEnter.name);
+                PlayDropSound();
             }
         }
 
         // Reveniți la poziția inițială
         rectTransform.anchoredPosition = initialPosition;
+    }
+    private void PlayDropSound()
+    {
+        if (audioSource != null && dropSound != null)
+        {
+            audioSource.PlayOneShot(dropSound);
+        }
+        else
+        {
+            Debug.LogError("AudioSource or dropSound is not set.");
+        }
     }
 }

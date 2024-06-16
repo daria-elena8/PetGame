@@ -6,7 +6,7 @@ public class MiniGameManager : MonoBehaviour
 {
 
     public GameObject startButton;
-    public GameObject backButton;
+    public Button backToMainButton;
     public Button restartButton;
     public GameObject gameOverPanel;
     public Text scoreText;
@@ -25,10 +25,12 @@ public class MiniGameManager : MonoBehaviour
         gameOverPanel.SetActive(false);
         startButton.SetActive(true);
         Time.timeScale = 0; // Oprește timpul la început
-
+        backToMainButton.onClick.AddListener(BackToMainScene);
         // Asociază evenimentul de click al butonului de restart
         restartButton.onClick.AddListener(RestartGame);
         FindObjectOfType<PauseManager>().ShowPauseButton();
+       
+
     }
 
     void Update()
@@ -36,7 +38,7 @@ public class MiniGameManager : MonoBehaviour
         if (gameStarted)
         {
             // Crește punctajul pe baza timpului supraviețuit
-            score += (int)(Time.deltaTime * 20);
+            score += (int)(Time.deltaTime * 100);
             scoreText.text = "Score: " + score;
         }
     }
@@ -48,8 +50,9 @@ public class MiniGameManager : MonoBehaviour
         scoreText.text = "Score: " + score;
         cubeSpawner.enabled = true;
         startButton.SetActive(false);
-        backButton.SetActive(false);
+        //backButton.SetActive(false);
         gameOverPanel.SetActive(false);
+        backToMainButton.gameObject.SetActive(false);
         Time.timeScale = 1; // Pornește timpul
     }
 
@@ -59,7 +62,7 @@ public class MiniGameManager : MonoBehaviour
     {
         gameStarted = false;
         cubeSpawner.enabled = false;
-
+      
         if (score > 200)
         {
             CurrencyManager.AddCurrency((int)score/10);
@@ -76,8 +79,22 @@ public class MiniGameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        // Reîncarcă scena curentă
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-       
+    }
+
+    public void BackToMainScene()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(1);
+        //var sceneChanger = FindObjectOfType<SceneChanger>();
+        //if (sceneChanger != null)
+        //{
+        //    //sceneChanger.GoToMainScene();
+        //    SceneManager.LoadScene(1);
+        //}
+        //else
+        //{
+        //    Debug.LogError("SceneChanger not found in the scene.");
+        //}
     }
 }

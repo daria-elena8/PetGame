@@ -1,18 +1,24 @@
 ﻿<Properties StartupConfiguration="{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/2D Progress Bar Toolkit/Scripts/HappinessBar.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Potion.cs">
     <Files>
-      <File FileName="Assets/2D Progress Bar Toolkit/Scripts/ClassicProgressBar.cs" Line="99" Column="40" />
-      <File FileName="Assets/2D Progress Bar Toolkit/Scripts/HappinessBar (copy) (copy).cs" Line="24" Column="62" />
-      <File FileName="Assets/2D Progress Bar Toolkit/Scripts/HungryBar.cs" Line="13" Column="1" />
+      <File FileName="Assets/2D Progress Bar Toolkit/Scripts/HungryBar.cs" />
+      <File FileName="Assets/SceneChanger.cs" Line="16" Column="10" />
+      <File FileName="Assets/Minigame/MiniGameManager.cs" Line="41" Column="47" />
+      <File FileName="Assets/Minigame/Spawner.cs" Line="1" Column="1" />
+      <File FileName="Assets/Minigame/PauseManager.cs" Line="13" Column="35" />
+      <File FileName="Assets/CurrencyDisplay.cs" Line="24" Column="51" />
+      <File FileName="Assets/CurrencyManager.cs" Line="36" Column="8" />
+      <File FileName="Assets/Potion.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="My project (1)" expanded="True">
+          <Node name="My project (1)">
             <Node name="Assets" expanded="True">
               <Node name="2D Progress Bar Toolkit" expanded="True">
                 <Node name="Scripts" expanded="True" />
               </Node>
+              <Node name="Minigame" expanded="True" />
             </Node>
           </Node>
         </State>
