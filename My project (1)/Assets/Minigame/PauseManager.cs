@@ -68,6 +68,6 @@ public class PauseManager : MonoBehaviour
     public void BackToMainScene()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene(1);
     }
 }

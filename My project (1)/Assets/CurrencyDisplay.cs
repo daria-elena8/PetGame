@@ -13,14 +13,15 @@ using UnityEngine.UI;
 public class CurrencyDisplay : MonoBehaviour
 
 {
-
+    public static AudioClip moneySound;
+    public static AudioSource audioSource;
     public Text currencyText;
 
 
     void Start()
 
     {
-
+        audioSource = GetComponent<AudioSource>();
         // Inițializare text 
         UpdateCurrencyDisplay(CurrencyManager.GetCurrency());
 
@@ -50,7 +51,7 @@ public class CurrencyDisplay : MonoBehaviour
     {
 
         currencyText.text = "" + newCurrency;
-
+        audioSource.PlayOneShot(moneySound);
     }
 
 }

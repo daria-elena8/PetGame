@@ -20,12 +20,19 @@ public class Potion : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 
     private int potionCount = 0;
 
+
+    public AudioClip potionSound; //  variabila pentru sunetul poțiunii
+    private AudioSource audioSource; //  o variabilă pentru AudioSource
+    public AudioClip buyPotionSound;
+
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
         canvasGroup = GetComponent<CanvasGroup>();
         initialPosition = rectTransform.anchoredPosition;
+        audioSource = GetComponent<AudioSource>();
+        LoadPotionSound();
         //GameObject foxObject = GameObject.FindGameObjectWithTag("Fox");
         //if(foxObject != null)
         //    foxAnimator = foxObject.GetComponent<Animator>();
@@ -99,6 +106,7 @@ public class Potion : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
                         hungryBar.MaxHungry();
                         happinessBar.MaxHappiness();
                         fitnessBar.MaxFitness();
+                        PlayPotionSound();
                     }
                     else
                     {
@@ -122,6 +130,7 @@ public class Potion : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
                     foxAnimator.SetTrigger("TrPotion");
                     Debug.Log("Fallback trigger 'TrPotion' set on " + eventData.pointerEnter.name);
                     RemovePotion();
+                    PlayPotionSound();
                 }
                 else
                 {
@@ -134,7 +143,38 @@ public class Potion : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
         // Reveniți la poziția inițială
         rectTransform.anchoredPosition = initialPosition;
     }
-
+    private void PlayPotionSound()
+    {
+        if (audioSource != null && potionSound != null)
+        {
+            audioSource.PlayOneShot(potionSound);
+        }
+        else
+        {
+            Debug.LogError("AudioSource or potionSound is not set.");
+        }
+    }
+    private void LoadPotionSound()
+    {
+        if (potionSound == null)
+        {
+            // Încarcă sunetul din folderul Resources
+            potionSound = Resources.Load<AudioClip>("game-bonus-144751.mp3");
+            if (potionSound == null)
+            {
+                Debug.LogError("Potion sound not found in Resources folder");
+            }
+        }
+        if (buyPotionSound == null)
+        {
+            // Încarcă sunetul de cumpărare din folderul Resources
+            buyPotionSound = Resources.Load<AudioClip>("item-equip-6904.mp3"); 
+            if (buyPotionSound == null)
+            {
+                Debug.LogError("Buy potion sound not found in Resources folder");
+            }
+        }
+    }
     public void AddPotion()
     {
         if (CurrencyManager.GetCurrency() >= 30)
@@ -142,6 +182,7 @@ public class Potion : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
             potionCount++;
             CurrencyManager.RemoveCurrency(30);
             UpdatePotionText();
+            PlayBuyPotionSound();
         }
         else
         {
@@ -150,6 +191,17 @@ public class Potion : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
         }
     }
 
+    private void PlayBuyPotionSound()
+    {
+        if (audioSource != null && buyPotionSound != null)
+        {
+            audioSource.PlayOneShot(buyPotionSound);
+        }
+        else
+        {
+            Debug.LogError("AudioSource or buyPotionSound is not set.");
+        }
+    }
     private void RemovePotion()
     {
         if (potionCount > 0)
