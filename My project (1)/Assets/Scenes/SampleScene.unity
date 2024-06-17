@@ -439,7 +439,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 0.93309414, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -1515,7 +1515,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Game
+  m_Text: 'Earn more Coins! Earn more Coins! Earn more Coins! Earn more Coins! Earn
+    more Coins! '
 --- !u!222 &1139266256
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2348,8 +2349,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 406, y: 580}
-  m_SizeDelta: {x: 180, y: 140}
+  m_AnchoredPosition: {x: 412.41, y: -823.2}
+  m_SizeDelta: {x: 2576.8, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1612958911
 MonoBehaviour:
@@ -2372,7 +2373,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.6509434, g: 0.371529, b: 0.4593952, a: 1}
+    m_NormalColor: {r: 1, g: 0.3438313, b: 0.1490565, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}

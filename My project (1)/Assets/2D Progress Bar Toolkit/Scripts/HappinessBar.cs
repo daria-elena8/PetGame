@@ -105,6 +105,10 @@ public class Happiness : MonoBehaviour
     {
         IncreaseHappiness();
     }
+    public bool isZero()
+    {
+        return m_FillAmount == 0f;
+    }
 
     private float ConvertFragmentToWidth(float fragment)
     {
