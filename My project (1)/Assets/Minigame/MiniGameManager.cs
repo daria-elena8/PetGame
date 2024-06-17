@@ -60,13 +60,14 @@ public class MiniGameManager : MonoBehaviour
 
     public void GameOver()
     {
+        //player.OnCollisionEnter();
         gameStarted = false;
         cubeSpawner.enabled = false;
       
-        if (score > 200)
+        if (score > 20)
         {
-            CurrencyManager.AddCurrency((int)score/10);
-            coinsEarnedText.text = "Coins Earned: " + score/10;
+            CurrencyManager.AddCurrency2((int)score);
+            coinsEarnedText.text = "Coins Earned: " + score;
         }
         else
         {
@@ -75,6 +76,7 @@ public class MiniGameManager : MonoBehaviour
 
         gameOverPanel.SetActive(true);
         Time.timeScale = 0; // Oprește timpul
+       
     }
 
     public void RestartGame()

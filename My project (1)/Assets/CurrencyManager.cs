@@ -54,6 +54,17 @@ public class CurrencyManager : MonoBehaviour
 
 
     }
+    public static void AddCurrency2(int amount)
+    {
+        currency += amount;
+        // Emiterea evenimentului 
+        OnCurrencyChanged?.Invoke(currency);
+        // Redă sunetul
+
+        // audioSource.PlayOneShot(moneySound);
+
+
+    }
 
 
 
