@@ -1,0 +1,43 @@
+User Stories
+
+Opțiuni Meniu Principal
+
+Ca utilizator, vreau să pot începe jocul din meniul principal astfel încât să pot începe să joc.
+Ca utilizator, vreau să accesez secțiunea de ajutor din meniul principal astfel încât să pot înțelege cum să joc jocul.
+Ca utilizator, vreau să pot ieși din joc din meniul principal astfel încât să pot închide aplicația ușor.
+
+Interacțiuni Scena Principală
+
+Ca utilizator, vreau să văd numărul meu curent de monede în scena principală astfel încât să-mi pot urmări progresul.
+Ca utilizator, vreau să văd animalul în scena principală astfel încât să pot interacționa cu el.
+Ca utilizator, vreau ca animalul să sară sau să se dea peste cap când fac swipe în sus astfel încât să pot vedea animațiile sale.
+Ca utilizator, vreau ca animalul să se așeze când fac swipe în jos astfel încât să-l văd schimbându-și starea.
+Ca utilizator, vreau ca animalul să mănânce mărul când i-l dau astfel încât să-și recapete energia.
+Ca utilizator, vreau să văd barele de fitness, fericire și foame în scena principală astfel încât să pot monitoriza starea animalului.
+Ca utilizator, vreau ca animalul să moară dacă barele de fitness, fericire sau foame sunt goale astfel încât să înțeleg consecințele neglijării.
+
+Funcționalități Minigame
+
+Ca utilizator, vreau să încep minigame-ul din scena principală astfel încât să pot câștiga mai multe monede.
+Ca utilizator, vreau un buton de play în minigame pentru a începe jocul astfel încât să pot începe provocarea.
+Ca utilizator, vreau un buton de back în minigame pentru a mă întoarce în scena principală astfel încât să pot ieși din minigame.
+Ca utilizator, vreau un buton de pauză în minigame pentru a întrerupe jocul astfel încât să pot lua o pauză.
+Ca utilizator, vreau opțiuni pentru a continua, a relua jocul sau a mă întoarce în scena principală când jocul este în pauză astfel încât să-mi pot gestiona gameplay-ul.
+
+Mecanici Minigame
+
+Ca utilizator, vreau să controlez o sferă în minigame pentru a evita obstacolele astfel încât să pot obține puncte.
+Ca utilizator, vreau ca sfera să fie distrusă la coliziunea cu obstacolele astfel încât jocul să se poată încheia.
+Ca utilizator, vreau să văd scorul meu crescând pe măsură ce supraviețuiesc mai mult în minigame astfel încât să-mi pot urmări performanța.
+Ca utilizator, vreau să câștig monede pe baza scorului meu în minigame astfel încât să le pot folosi în scena principală.
+
+Gestionarea Game Over
+
+Ca utilizator, vreau să văd un panou de game over când minigame-ul se termină astfel încât să-mi pot vedea rezultatele.
+Ca utilizator, vreau ca panoul de game over să afișeze monedele câștigate pe baza scorului meu astfel încât să știu recompensa mea.
+Ca utilizator, vreau opțiuni pentru a relua minigame-ul sau a mă întoarce în scena principală din panoul de game over astfel încât să pot alege următoarea mea acțiune.
+
+Fluxul General al Jocului
+
+Ca utilizator, vreau ca jocul să-mi salveze și să-mi încarce progresul astfel încât să pot continua de unde am rămas.
+Ca utilizator, vreau tranziții fluide între scene astfel încât experiența mea să fie fără întreruperi.
