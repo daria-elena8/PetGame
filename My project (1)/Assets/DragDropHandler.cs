@@ -59,7 +59,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
         Debug.Log("OnDrag triggered");
-        //foxAnimator.SetTrigger("TrYes");
+        foxAnimator.SetTrigger("TrYes");
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -87,6 +87,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             if (result.gameObject.CompareTag("Fox"))
             {
                 Animator foxAnimator = result.gameObject.GetComponent<Animator>();
+
                 if (foxAnimator != null)
                 {
                     foxAnimator.SetTrigger("TrEat");

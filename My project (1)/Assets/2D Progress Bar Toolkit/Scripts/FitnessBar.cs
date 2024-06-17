@@ -76,9 +76,14 @@ public class FitnessBar : MonoBehaviour
     public void MaxFitness() { m_FillAmount = 1f; }
 
     // Funcția care va fi apelată de la Animator
-    public void OnAnimationTrigger()
+    //public void OnAnimationTrigger()
+    //{
+    //    IncreaseFitness();
+    //}
+
+    public bool isZero()
     {
-        IncreaseFitness();
+        return m_FillAmount == 0f;
     }
 
     private float ConvertFragmentToWidth(float fragment)

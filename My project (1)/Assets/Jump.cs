@@ -43,7 +43,11 @@ public class Jump : MonoBehaviour
 
     void Update()
     {
-        // Logica de swipe este acum în metodele OnMouseDown și OnMouseUp
+        if(happinessBar.isZero() && hungryBar.isZero() && fitnessBar.isZero())
+        {
+            mAnimator.SetBool("Die", true);
+        }
+        else mAnimator.SetBool("Die", false);
     }
 
     void OnMouseDown()

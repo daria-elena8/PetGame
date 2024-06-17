@@ -108,6 +108,12 @@ public class HungryBar : MonoBehaviour
     //    IncreaseHungry();
     //}
 
+    public bool isZero()
+    {
+        return m_FillAmount == 0f;
+    }
+
+
     private float ConvertFragmentToWidth(float fragment)
     {
         return m_RectTransform.sizeDelta.x * fragment;
